@@ -60,8 +60,8 @@ def edit_profile(request):
             image = form.save(commit=False)
             image.user = current_user
             image.save()
-        return redirect('homePage')
+        return redirect('home')
 
     else:
         form = UpdatebioForm()
-    return render(request, 'registration/edit_profile.html', {"form": form})
+    return render(request, 'edit_profile.html', {"form": form})
