@@ -50,3 +50,18 @@ def new_project(request):
     else:
         form = NewProjectForm()
     return render(request, 'new_project.html', {"form": form})
+
+@login_required(login_url='/accounts/login/')
+def edit_profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = UpdatebioForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.user = current_user
+            image.save()
+        return redirect('homePage')
+
+    else:
+        form = UpdatebioForm()
+    return render(request, 'registration/edit_profile.html', {"form": form})
