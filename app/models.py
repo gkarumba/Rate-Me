@@ -29,3 +29,34 @@ class Profiles(models.Model):
         profile = Profiles.objects.get(user = id)
         return profile
     
+class Projects(models.Model):
+    image = models.ImageField(blank=True,)
+    details = models.CharField(max_length=200)
+    url = models.CharField(max_length=200)
+    posted = models.DateTimeField(auto_now=True)
+    profile = models.ForeignKey(User,on_delete=models.CASCADE)
+    
+    class Meta:
+        ordering = ('-posted')
+    
+    def save_project(self):
+        self.save()
+        
+    def delete_project(self):
+        self.delete()
+    
+    @classmethod
+    def get_project_by_id(cls,id):
+        project = Projects.objects.get(pk=id)
+        return project
+    
+    @classmethod
+    def get_profile_projects(cls,profile):
+        projects = Projects.object.filter(profile__pk = profile)
+        return projects
+    
+    @classmethod
+    def get_all_projects(cls):
+        projects = Projects.objects.all()
+        return projects
+        
