@@ -37,7 +37,7 @@ class Projects(models.Model):
     profile = models.ForeignKey(User,on_delete=models.CASCADE)
     
     class Meta:
-        ordering = ('-posted')
+        ordering = ('-posted',)
     
     def save_project(self):
         self.save()

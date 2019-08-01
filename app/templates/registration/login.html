@@ -1,24 +1,16 @@
 {%extends "registration/base.html"%} {% load bootstrap4 %} {% load static %} {% block content %}
-<div class="container" style="background-color:#fff;">
-  <div class="row p-0 m-0">
-    <div class="col-md-6 mt-5">
+<div class="container " style="background-color:#fff;">
+  <div class="row p-0 m-0 text-center" >
       {% if form.errors %}
       <p> Password or Username is incorrect </p>
       {% endif %}
-
-      <img class="thumbnail" src="{% static 'photos/insta.jpg' %}" style="height:400px;width:450px;">
-
-
-    </div>
-
-    <div class="col-md-6  mt-5">
+    <div class="mt-5" style="margin: 0 auto;">
       {% if form.errors %}
       <p> Some Information Might be Incorrect </p>
       {% endif %}
       <div class="card border-primary mb-4" style="max-width:25rem;">
 
         <div class="card-header text-center">
-          <h1 class="h1" style="font-family: 'Grand Hotel', cursive; color:blue;font-size:65px;">Rateme</h1>
           <h3 class="text-center" style="color:grey;font-size:15px;">Login to rate projects and get ideas.</h3>
         </div>
         <div class="card-body text-primary">
@@ -32,6 +24,9 @@
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
+          <p style="color:grey;">Don't have an account?</p>
+          <p style="color:grey;">By signing up, you agree to our Terms, Data Policy and Cookies Policy.</p>
+          <a href="/accounts/register" class="btn btn-outline-primary btn-sm">Sign Up</a>
         </div>
       </div>
 
@@ -42,8 +37,8 @@
 
   <!-- ********************* -->
 
-  <div class="row p-0 m-0">
-    <div class="col-md-6">
+  <!-- <div class="row p-0 m-0 text-center" >
+    <div style="margin: 0 auto;"">
 
       <div class="card mt-5" style="width: 28rem;">
         <div class="card-body text-center">
@@ -52,4 +47,5 @@
           <a href="/accounts/register" class="btn btn-primary">Sign Up</a>
         </div>
       </div>
-    </div>
+    </div> -->
+{%endblock%}

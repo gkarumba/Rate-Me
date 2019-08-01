@@ -10,7 +10,7 @@ class NewProjectForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Reviews
-        fields = ('posted','project','user')
+        exclude = ['posted','project','user']
         
 class UpdateProfileForm(forms.ModelForm):
     class Meta:

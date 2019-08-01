@@ -4,34 +4,33 @@
   <div class="row">
 
 
-    <div class="col-md-6 mt-5">
-      <img class="thumbnail" src="{% static 'photos/insta.jpg' %}" style="height:400px;width:450px;">
+    <div class="mt-5" style="margin: 0 auto;">
 
       <div class="card mt-5" style="width: 28rem;">
         <div class="card-body text-center">
           <h5 class="card-title">Have an account already?</h5>
           <h2 style="color:grey;font-size:10px;">By signing up, you agree to our Terms, Data Policy and Cookies Policy.</h2>
-          <a href="/accounts/login" class="btn btn-primary">Login</a>
+          <a href="/accounts/login" class="btn btn-outline-primary">Login</a>
         </div>
       </div>
     </div>
 
-    <div class="col-md-5 mt-5">
+    <div class=" mt-5" style="margin: 0 auto;">
       {% if form.errors %}
       <p> Some Information Might be Incorrect </p>
       {% endif %}
       <div class="card border-primary mb-4" style="max-width:25rem;">
 
         <div class="card-header text-center">
-          <h1 class="h1" style="font-family: 'Grand Hotel', cursive; color:blue;font-size:65px;">Rateme</h1>
-          <h3 class="text-center" style="color:grey;font-size:15px;">Sign up to rate projects and get ideas.</h3>
+          
+          <h5 class="text-center" style="color:grey;font-size:15px;">Sign up to rate projects and get ideas.</h5>
         </div>
         <div class="card-body text-primary">
 
           <form action="/accounts/register/" method="post">
             {% csrf_token %} {% bootstrap_form form %}
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+              <input type="submit" class="btn btn-outline-primary btn-sm" value="Sign Up">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
@@ -45,3 +44,4 @@
     </div>
 
   </div>
+  {%endblock%}
