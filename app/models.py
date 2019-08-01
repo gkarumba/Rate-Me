@@ -60,3 +60,21 @@ class Projects(models.Model):
         projects = Projects.objects.all()
         return projects
         
+class Reviews(models.Model):
+    review = models.CharField(max_length=150)
+    posted = models.DateField(auto_now=True)
+    rate = models.IntegerField()
+    project = models.ForeignKey(Projects,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    
+    def save_review(self):
+        self.save()
+        
+    def delete_comments(self):
+        self.delete()
+        
+    @classmethod
+    def get_review_by_image(cls,id):
+        review = Review.objects.filter(image__pk = id)
+        return review
+        
