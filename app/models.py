@@ -77,4 +77,7 @@ class Reviews(models.Model):
     def get_review_by_image(cls,id):
         review = Review.objects.filter(image__pk = id)
         return review
-        
+
+class RatemeLetterRecipients(models.Model):
+    name = models.CharField(max_length = 50)
+    email = models.EmailField()

@@ -1,6 +1,9 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.shortcuts import render,redirect, get_object_or_404
+from .models import Profiles,Projects,Reviews,RatemeLetterRecipients
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
-from django.shortcuts import render
 
 # Create your views here.
