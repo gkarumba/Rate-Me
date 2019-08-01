@@ -34,4 +34,19 @@ def project(request,id):
     else:
         form = ReviewForm()
         
-    return render(request, 'project.html',{'image':image,'form':form,'comments':comments})
+    return render(request, 'project.html',{'project':project,'form':form,'comments':comments})
+
+@login_required(login_url='/accounts/login/')
+def new_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = current_user
+            project.save()
+        return redirect('home')
+
+    else:
+        form = NewProjectForm()
+    return render(request, 'new_project.html', {"form": form})
