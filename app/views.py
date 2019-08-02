@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render,redirect, get_object_or_404,render_to_response
 from .models import Profiles,Projects,Reviews,RatemeLetterRecipients
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from .forms import NewProjectForm,ReviewForm,UpdateProfileForm,RatemeSubscriptionForm
 from .email import send_welcome_email
+from django.template import RequestContext
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -64,14 +65,16 @@ def edit_profile(request):
 
     else:
         form = UpdatebioForm()
-    return render(request, 'edit_profile.html', {"form": form})
+    return render(request, 'edit_profile.html', RequestContext(request, {}))
 
 @login_required(login_url='/accounts/login/')
 def profile(request, username = None):
-
-    if not username:
-        username = request.user.username
+    user = request.user
+    profile = Profiles.filter_profile_by_id(user.id)
+    # if not username:
+    #     username = request.user.username
+    # current_user = request.user
     # projects by user id
-    projects = Projects.objects.filter(user_id=username)
+    projects = Projects.objects.filter(profile_id=user.id)
 
     return render(request, 'profile.html', locals())
