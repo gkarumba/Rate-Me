@@ -71,7 +71,7 @@ def profile(request, username = None):
 
     if not username:
         username = request.user.username
-    # images by user id
-    images = Image.objects.filter(user_id=username)
+    # projects by user id
+    projects = Projects.objects.filter(user_id=username)
 
     return render(request, 'profile.html', locals())

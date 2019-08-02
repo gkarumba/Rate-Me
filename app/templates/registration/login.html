@@ -18,7 +18,7 @@
             {% csrf_token %} {% bootstrap_form form%}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              <input type="submit" class="btn btn-primary btn-sm btn-block" value="Login">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
@@ -26,26 +26,16 @@
           </form>
           <p style="color:grey;">Don't have an account?</p>
           <p style="color:grey;">By signing up, you agree to our Terms, Data Policy and Cookies Policy.</p>
-          <a href="/accounts/register" class="btn btn-outline-primary btn-sm">Sign Up</a>
+          <a href="/accounts/register" class="btn btn-primary btn-sm btn-block">Sign Up</a>
         </div>
       </div>
 
     </div>
 
   </div>
-
-
-  <!-- ********************* -->
-
-  <!-- <div class="row p-0 m-0 text-center" >
-    <div style="margin: 0 auto;"">
-
-      <div class="card mt-5" style="width: 28rem;">
-        <div class="card-body text-center">
-          <h5 class="card-title">Don't have an account?</h5>
-          <h2 style="color:grey;font-size:10px;">By signing up, you agree to our Terms, Data Policy and Cookies Policy.</h2>
-          <a href="/accounts/register" class="btn btn-primary">Sign Up</a>
-        </div>
+  <footer id="sticky-footer" class="py-4 bg-white text-dark-50 border-top">
+      <div class="container text-center">
+          <small style="color:grey;">Copyright &copy; Rateme</small>
       </div>
-    </div> -->
+    </footer>
 {%endblock%}
