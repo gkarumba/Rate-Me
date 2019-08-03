@@ -5,24 +5,27 @@
 <div class="container mt-4">
         <h4 class="">FrontEnd</h4>
         <div class="row ">
-            
+          {%if projects%}
+          {% for project in projects%}
           <div class="col-12 col-sm-8 col-md-6 col-lg-4">
             <div class="card">
-              <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+              <img class="card-img" src="{{project.image.url}}" alt="Bologna">
               <div class="card-img-overlay">
-                <a href="#" class="btn btn-light btn-sm">Cooking</a>
+                <a href="#" class="btn btn-light btn-sm">FRONTEND</a>
               </div>
               <div class="card-body">
-                <h4 class="card-title">Pasta with Prosciutto</h4>
+                <h4 class="card-title">PROJECT NAME</h4>
                 <small class=" cat">
-                  <i class="fa fa-clock text-info"></i> 30 minutes
-                  <i class="fa fa-users text-info"></i> 4 portions
+                  <i class="fa fa-eye" aria-hidden="true"></i> Live Demo
+                  <i class="fa fa-users text-info"></i> 4 views
                 </small>
-                <p class="card-text">I love quick, simple pasta dishes, and this is one of my favorite.</p>
-                <a href="#" class="btn btn-info">Read Recipe</a>
+                <p class="card-text">{{project.details}}</p>
+                
+                <a href="{% url 'project' project_id=project.id %}"> View Project</a>
+                
               </div>
               <div class="card-footer  d-flex justify-content-between bg-transparent border-top-0">
-                <div class="views">Oct 20, 12:45PM
+                <div class="views">{{project.posted}}
                 </div>
                 <div class="stats">
                      <i class="fa fa-like"></i> 1347
@@ -62,6 +65,9 @@
           </div>            
         </div>
       </div>
+      
+      {%endfor%}
+      {%endif%}
       <footer id="sticky-footer" class="py-4 bg-white text-dark-50 mt-4 border-top">
           <div class="container text-center">
               <small style="color:grey;">Copyright &copy; Rateme</small>

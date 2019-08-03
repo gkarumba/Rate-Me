@@ -5,6 +5,7 @@ from django.forms import ModelForm, Textarea, IntegerField
 class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Projects
+        fields = ['image','details','url']
         exclude = ['profile','posted']
         
 class ReviewForm(forms.ModelForm):
@@ -15,6 +16,7 @@ class ReviewForm(forms.ModelForm):
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profiles
+        fields = ['image','bio','contact']
         exclude = ['user']
         
 class RatemeSubscriptionForm(forms.ModelForm):
