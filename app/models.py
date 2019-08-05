@@ -75,7 +75,7 @@ class Reviews(models.Model):
         
     @classmethod
     def get_review_by_image(cls,id):
-        review = Review.objects.filter(image__pk = id)
+        review = Reviews.objects.filter(project__pk = id)
         return review
 
 class RatemeLetterRecipients(models.Model):

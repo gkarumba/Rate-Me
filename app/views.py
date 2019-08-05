@@ -21,7 +21,7 @@ def project(request,project_id):
         project = Projects.get_project_by_id(project_id)
     except DoesNotExist:
         raise Http404()
-    current_user= request.User
+    current_user= request.user
     comments = Reviews.get_review_by_image(project_id)
     
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def project(request,project_id):
             review.user = current_user
             review.review = comment
             review.save()
-            return redirect('project',project_id=project_id)
+            return redirect('project')
     else:
         form = ReviewForm()
         

@@ -5,7 +5,7 @@
 
   <div class="jumbotron text-center" style="background-color:white;">
 
-    <h1 class="h1" style="font-family: 'Grand Hotel', cursive; color:blue;font-size:70px;">Instagram</h1>
+    <h1 class="h1" style="font-family: 'Grand Hotel', cursive; color:blue;font-size:70px;">Rateme &#x1F441;</h1>
 
 
   </div>
@@ -13,72 +13,35 @@
 
 
 <div class="container">
-<div class="card mb-3" style="width:40rem;;">
-  <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap" class="img-fluid" size="100px200">
-  <div class="card-body">
-    <button class="btn btn-lg btn-danger">Like This Image</button>
-
-
-
-
-    <!--*****************-->
-    <!--TESTING LIKE BUTTON-->
-
-    <a href="#" onClick="document.getElementById('likebutton').submit()">Like This Post</a> {{image.likes}}
-
-<form id="likebutton" method="POST" action="/posts/{{image.id}}/preference/1/">
-{% csrf_token %}
-<input type="hidden">
-</form>
-
-
-    <!--********************-->
-
-    <h5 class="card-title" style="font-family: 'Oswald', sans-serif;"><strong>Name Of Image:</strong>
-      <br>
-      {{image.name}}</h5>
-    <p class="card-text" style="font-family: 'Oswald', sans-serif;"><strong>Location:</strong>
-      <br>
-      {{image.location}}</p>
-    <p class="card-text" style="font-family: 'Oswald', sans-serif;"><strong>Caption:</strong>
-      <br>
-      {{image.description}}</p>
-    <p class="card-text" style="font-family: 'Oswald', sans-serif;"><small class="text-muted">Posted by {{image.user}}</small></p>
+  <div class="row">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+          <div class="card">
+            <img class="card-img" src="{{project.image.url}}" alt="Bologna">
+            <div class="card-img-overlay">
+              <a href="{% url 'project' project_id=project.id %}" class="btn btn-light btn-sm">FRONTEND</a>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">PROJECT NAME</h4>
+              <small class=" cat">
+                <a href="{{project.url}}"><i class="fa fa-eye" aria-hidden="true"></i></a> Live Demo
+                <a href="{% url 'project' project_id=project.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                </a> More Info
+              </small>
+              <p class="card-text">{{project.details}}</p>
+              
+              <!-- <a href="{% url 'project' project_id=project.id %}"><buttton class="btn btn-outline-primary">View Project</buttton></a> -->
+              
+            </div>
+            <div class="card-footer  d-flex justify-content-between bg-transparent border-top-0">
+              <div class="views">{{project.posted}}
+              </div>
+              <div class="stats">
+                  <a class=""> <i class="fa fa-reply"></i> Reply</a>
+                  <a class=""> <i class="fa fa-heart"></i> Like</a>
+              </div>   
+            </div>
+          </div>
   </div>
-
-  <div class="card border-secondary">
-     <div class="card-header">
-     <h5 style="font-family: 'Oswald', sans-serif;">Image Comments</h5>
-       </div>
-
-
-     <div class="card-body text-primary">
-
-
-     <p style="font-family: 'Oswald', sans-serif;">{{image.comments}}</p>
-
-
-       {% for comment in comments %}
-
-       <p style="font-family: 'Oswald', sans-serif;"> {{ comment }}</p>
-
-       {% endfor%}
-
-     </div>
-   </div>
-</div>
-</div>
-
-
-
-<div class="container mt-2 mx-auto p-5" style="background-color:#ffffff; border: 1px solid #e6e6e6;">
-  <h3 style="font-family: 'Oswald', sans-serif;">Add your comment</h3>
-  <hr>
-  <form action=""  method="post">
-    {%csrf_token%} {% bootstrap_form form %}
-      <input type="submit" class="btn btn-primary" value="Post">
-  </form>
-  <hr>
 </div>
 
 {% endblock %}
