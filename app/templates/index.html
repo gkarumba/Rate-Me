@@ -11,32 +11,30 @@
             <div class="card">
               <img class="card-img" src="{{project.image.url}}" alt="Bologna">
               <div class="card-img-overlay">
-                <a href="{% url 'project' project_id=project.id %}" class="btn btn-light btn-sm">FRONTEND</a>
+                <a href="{% url 'project' pk=project.id %}" class="btn btn-light btn-sm">VIEW</a>
               </div>
               <div class="card-body">
                 <h4 class="card-title">PROJECT NAME</h4>
                 <small class=" cat">
-                  <a href="{{project.url}}"><i class="fa fa-eye" aria-hidden="true"></i></a> Live Demo
-                  <a href="{% url 'project' project_id=project.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                  </a> More Info
+                  <!-- <a href="{{project.url}}"><i class="fa fa-eye" aria-hidden="true"></i></a> Live Demo -->
+                  
                 </small>
                 <p class="card-text">{{project.details}}</p>
                 
-                <!-- <a href="{% url 'project' project_id=project.id %}"><buttton class="btn btn-outline-primary">View Project</buttton></a> -->
+                
                 
               </div>
               <div class="card-footer  d-flex justify-content-between bg-transparent border-top-0">
                 <div class="views">{{project.posted}}
                 </div>
                 <div class="stats">
-                    <a class=""> <i class="fa fa-reply"></i> Reply</a>
-                    <a class=""> <i class="fa fa-heart"></i> Like</a>
+                    <i class="fa fa-like">Rating</i> 5
                 </div>   
               </div>
             </div>
           </div>            
         </div>
-        <h4 class="mt-4">Game</h4>
+        <!-- <h4 class="mt-4">Game</h4>
         <div class="row ">
             
           <div class="col-12 col-sm-8 col-md-6 col-lg-4">
@@ -65,7 +63,7 @@
             </div>
           </div>            
         </div>
-      </div>
+      </div> -->
       
       {%endfor%}
       {%endif%}

@@ -2,65 +2,135 @@
 {% load bootstrap4 %}
 {% block content %}
 
-<section>
-    <div class="container">
-            <div class="row mbr-justify-content-center">
-    
-                <div class="col-lg-6 mbr-col-md-10">
-                    <div class="wrap">
-                        <div class="ico-wrap">
-                            <span class="mbr-iconfont fa-volume-up fa"></span>
-                        </div>
-                        <div class="text-wrap vcenter">
-                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Stay <span>Successful</span></h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                        </div>
+<link href="https://fonts.googleapis.com/css?family=Charmonman|Dancing+Script|Kodchasan|Spirax|Abril+Fatface" rel="stylesheet">
+
+<div class="container">
+
+  <div class="jumbotron text-center" style="background-color:white;">
+
+    <h1 class="h1" style="font-family: 'Grand Hotel', cursive; color:blue;font-size:70px;">Rateme &#x1F441;</h1>
+
+
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+            <img class="card-img" src="{{projects.image.url}}" alt="Bologna">
+            <div class="card-img-overlay">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#{{user.id}}"> <i class="fa fa-reply"></i> Comment</a>
+                    <a href="{{projects.url}}" class="btn btn-secondary">
+                            Live Demo 
+                        </a>   
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">PROJECT NAME</h4>
+              <small class=" cat"> 
+                <!-- <button class="btn btn-primary" onclick="window.open('{{projects.url}}')">
+                        Live Demo
+                </button> -->
+                     
+                </a> 
+              </small>
+              <p class="card-text">{{projects.details}}</p>
+            </div>
+            <div class="card-footer  d-flex justify-content-between bg-transparent border-top-0">
+              <div class="views">{{projects.posted}}
+              </div>
+              <div class="stats">
+                    <i class="fa fa-like">Rating</i> 5
+              </div>   
+            </div>
+          </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+            <p class="home-list"> {{comments|length}} comments </p>
+            <hr>
+            <p class="home-list">Comments</p>
+            <div class="comments">
+            {% for comment in comments %}
+                <div class="row">
+                    <div class="col-md-10">
+                        <ul class="list-inline home-list">
+                            <!-- <li class="list-inline-item">
+                                <a href="{% url 'profile' username=comment.user.username %}">{{comment.user.username}}</a>
+                            </li> -->
+                            <li class="list-inline-item">
+                                <p>{{comment.comment}} </p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10">
-                    <div class="wrap">
-                        <div class="ico-wrap">
-                            <span class="mbr-iconfont fa-calendar fa"></span>
-                        </div>
-                        <div class="text-wrap vcenter">
-                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Create
-                                <span>An Effective Team</span>
-                            </h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                        </div>
+                {% empty %}
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3>There are no comments</h3>
                     </div>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10">
-                    <div class="wrap">
-                        <div class="ico-wrap">
-                            <span class="mbr-iconfont fa-globe fa"></span>
-                        </div>
-                        <div class="text-wrap vcenter">
-                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Launch
-                                <span>A Unique Project</span>
-                            </h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                        </div>
+                {% endfor %}
+            </div>
+            <!-- <form  method="POST">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="submit" class="btn btn-success" value="Update">
+            </form> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="modal fade" id="{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                    <h3 class="modal-title" id="exampleModalLongTitle"></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src='{{projects.image.url}}' class="img-responsive" width=100% height=100% alt="Image">
+                    </div>
+                    <div class="text-center">
+                        <blockquote class="blockquote text-center">
+                            <p class="mb-0">Follow</p>
+                            <footer class="blockquote-footer">Web Developer and Designer </footer>
+                        </blockquote>
                     </div>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10">
-                    <div class="wrap">
-                        <div class="ico-wrap">
-                            <span class="mbr-iconfont fa-trophy fa"></span>
+                <div class="modal-footer">
+                        {{form.media}}
+                    <div class="form-group row">
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">
+                            <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                                {%csrf_token%}
+                            
+                                {% bootstrap_form form%}
+                                <input id="id_myfield" type="submit" class="btn btn-success btn-lg" value="Post">
+                            </form>
                         </div>
-                        <div class="text-wrap vcenter">
-                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Achieve <span>Your Targets</span></h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        <div class="text-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
+                    
                 </div>
             </div>
+        </div>
     </div>
-    
-    </section>
     <footer id="sticky-footer" class="py-4 bg-white text-dark-50 border-top">
         <div class="container text-center">
             <small style="color:grey;">Copyright &copy; Rateme</small>
         </div>
-      </footer>
+    </footer>
+</div>
+
+
+
+<!-- <footer id="sticky-footer" class="py-4 bg-white text-dark-50 border-top">
+<div class="container text-center">
+    <small style="color:grey;">Copyright &copy; Rateme</small>
+</div>
+</footer> -->
 {% endblock %}

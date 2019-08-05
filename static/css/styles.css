@@ -9,6 +9,12 @@
     background-color: #fff;
 }
 
+.like:hover{
+    color: #eb6864;
+
+    background-color: #fff;
+}
+
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus .navbar-auth>li>a:focus {
     color: #eb6864;
 

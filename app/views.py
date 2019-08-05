@@ -16,14 +16,15 @@ def landing_page(request):
     return render(request,'index.html',{'projects':projects})
     
 
-def project(request,project_id):
+def project(request,pk):
     try:
-        project = Projects.get_project_by_id(project_id)
+        project = Projects.get_project_by_id(pk)
     except DoesNotExist:
         raise Http404()
+    print(project.url)
     current_user= request.user
-    comments = Reviews.get_review_by_image(project_id)
-    
+    comments = Reviews.get_review_by_image(pk)
+    print(pk)
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -33,11 +34,10 @@ def project(request,project_id):
             review.user = current_user
             review.review = comment
             review.save()
-            return redirect('project')
+            return redirect('project',pk=pk)
     else:
         form = ReviewForm()
-        
-    return render(request, 'project.html',{'projects':project,'form':form,'comments':comments})
+    return render(request, 'about.html',{'projects':project,'form':form,'comments':comments,'pk':pk})
 
 @login_required(login_url='/accounts/login/')
 def new_project(request):

@@ -18,18 +18,18 @@
           <div class="card">
             <img class="card-img" src="{{project.image.url}}" alt="Bologna">
             <div class="card-img-overlay">
-              <a href="{% url 'project' project_id=project.id %}" class="btn btn-light btn-sm">FRONTEND</a>
+              <!-- <a href="{% url 'project' project.id %}" class="btn btn-light btn-sm">FRONTEND</a> -->
             </div>
             <div class="card-body">
               <h4 class="card-title">PROJECT NAME</h4>
               <small class=" cat">
                 <a href="{{project.url}}"><i class="fa fa-eye" aria-hidden="true"></i></a> Live Demo
-                <a href="{% url 'project' project_id=project.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                <!-- <a href="{% url 'project' project.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i> -->
                 </a> More Info
               </small>
               <p class="card-text">{{project.details}}</p>
               
-              <!-- <a href="{% url 'project' project_id=project.id %}"><buttton class="btn btn-outline-primary">View Project</buttton></a> -->
+              <!-- <a href="{% url 'project' project.id %}"><buttton class="btn btn-outline-primary">View Project</buttton></a> -->
               
             </div>
             <div class="card-footer  d-flex justify-content-between bg-transparent border-top-0">

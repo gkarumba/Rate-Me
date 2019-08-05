@@ -5,7 +5,7 @@ from django.conf import settings
 
 urlpatterns=[
     url(r'^$',views.landing_page,name='home'),
-    url(r'^project/(?P<project_id>\d+)',views.project,name ='project'),
+    url(r'^project/(?P<pk>\d+)/$',views.project,name ='project'),
     url(r'^new/project$', views.new_project, name='new_project'),
     url(r'^edit/profile$', views.edit_profile, name='edit_profile'),
     url(r'^about',views.view_about,name='about'),
